@@ -1,0 +1,1 @@
+Loan Calculator project - modern Javascript
