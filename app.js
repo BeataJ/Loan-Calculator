@@ -1,6 +1,6 @@
 // Listen for submit
 document.getElementById('loan-form').addEventListener('submit', function(e) {
-  // Hode results
+  // Hide results
   document.getElementById('results').style.display = 'none';
 
   // Show loader
@@ -34,9 +34,18 @@ function calculateResults() {
     monthlyPayment.value = monthly.toFixed(2);
     totalPayment.value = (monthly*calclulatedPayments).toFixed(2);
     totalInterest.value = ((monthly*calclulatedPayments) - principal).toFixed(2);
+
+    // show results
+    document.getElementById('results').style.display = 'block';
+
+    // Hide loader
+    document.getElementById('loading').style.display = 'none';
   } else {
     // console.log('Please check your numbers');
     showError('Please check your numbers');
+
+    // // Hide loader
+    // document.getElementById('loading').style.display = 'none'
   }
 
   // e.preventDefault();
@@ -44,6 +53,12 @@ function calculateResults() {
 
 // Show Error
 function showError(error) {
+  // Hide results
+  document.getElementById('results').style.display = 'none';
+
+  // Hide loader
+  document.getElementById('loading').style.display = 'none';
+
   // Create div
   const errorDiv = document.createElement('div');
   
