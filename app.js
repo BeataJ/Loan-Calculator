@@ -1,8 +1,18 @@
 // Listen for submit
-document.getElementById('loan-form').addEventListener('submit', calculateResults);
+document.getElementById('loan-form').addEventListener('submit', function(e) {
+  // Hode results
+  document.getElementById('results').style.display = 'none';
+
+  // Show loader
+  document.getElementById('loading').style.display = 'block';
+
+  setTimeout(calculateResults, 2000);
+
+  e.preventDefault();
+});
 
 // Calculate Results
-function calculateResults(e) {
+function calculateResults() {
   console.log('Calculating...');
   // UI Vars
   const amount = document.getElementById('amount');
@@ -29,7 +39,7 @@ function calculateResults(e) {
     showError('Please check your numbers');
   }
 
-  e.preventDefault();
+  // e.preventDefault();
 }
 
 // Show Error
