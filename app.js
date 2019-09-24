@@ -37,9 +37,23 @@ function showError(error) {
   // Create div
   const errorDiv = document.createElement('div');
   
+  // Get element
+  const card = document.querySelector('.card');
+  const heading = document.querySelector('.heading');
+
   // add class
   errorDiv.className = 'alert alert-danger';
 
   // Create textNote and append to div
   errorDiv.appendChild(document.createTextNode(error));
+
+  // Insert error above heading
+  card.insertBefore(errorDiv, heading);
+
+  // Clear error after 3 seconds
+  setTimeout(clearError, 3000);
+}
+
+function clearError() {
+  document.querySelector('.alert').remove();
 }
